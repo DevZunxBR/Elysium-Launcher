@@ -1,34 +1,28 @@
 {
-  "version": "0.0.7",
-  "rss": "https://devzunxbr.github.io/Elysium-Launcher/rss.xml",
+  "version": "1.0.0",
+  "rss": "<LINK TO RSS FEED>",
   "discord": {
-    "clientId": "1529707096646357022"
+    "clientId": "<FILL IN OR REMOVE DISCORD OBJECT>",
+    "smallImageText": "<FILL IN OR REMOVE DISCORD OBJECT>",
+    "smallImageKey": "<FILL IN OR REMOVE DISCORD OBJECT>"
   },
   "servers": [
     {
-      "id": "vanilla_1_20_1",
-      "name": "Minecraft Vanilla 1.20.1",
-      "description": "Servidor Oficial Elysium 1.20.1",
-      "icon": "https://raw.githubusercontent.com/dscalzi/HeliosLauncher/master/build/icon.png",
+      "id": "vanilla_1_20_1-1.20.1",
+      "name": "vanilla_1_20_1 (Minecraft 1.20.1)",
+      "description": "vanilla_1_20_1 Running Minecraft 1.20.1",
+      "icon": null,
       "version": "1.0.0",
       "address": "localhost:25565",
       "minecraftVersion": "1.20.1",
-      "mainServer": true,
+      "discord": {
+        "shortId": "<FILL IN OR REMOVE DISCORD OBJECT>",
+        "largeImageText": "<FILL IN OR REMOVE DISCORD OBJECT>",
+        "largeImageKey": "<FILL IN OR REMOVE DISCORD OBJECT>"
+      },
+      "mainServer": false,
       "autoconnect": false,
-      "modules": [
-        {
-          "id": "net.minecraft:client:1.20.1",
-          "name": "Minecraft Client",
-          "type": "Vanilla",
-          "version": "1.20.1",
-          "artifact": {
-            "size": 0,
-            "MD5": "",
-            "url": "",
-            "path": "net/minecraft/client/1.20.1/client-1.20.1.jar"
-          }
-        }
-      ]
+      "modules": []
     }
   ]
 }
