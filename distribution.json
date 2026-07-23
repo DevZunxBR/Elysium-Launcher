@@ -1,5 +1,5 @@
 {
-  "version": "0.0.6",
+  "version": "0.0.7",
   "rss": "https://devzunxbr.github.io/Elysium-Launcher/rss.xml",
   "discord": {
     "clientId": "1529707096646357022"
@@ -9,6 +9,7 @@
       "id": "vanilla_1_20_1",
       "name": "Minecraft Vanilla 1.20.1",
       "description": "Servidor Oficial Elysium 1.20.1",
+      "icon": "https://raw.githubusercontent.com/dscalzi/HeliosLauncher/master/build/icon.png",
       "version": "1.0.0",
       "address": "localhost:25565",
       "minecraftVersion": "1.20.1",
