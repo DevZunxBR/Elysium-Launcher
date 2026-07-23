@@ -1,17 +1,14 @@
 {
-  "version": "0.0.4",
+  "version": "0.0.5",
   "rss": "https://devzunxbr.github.io/Elysium-Launcher/rss.xml",
   "discord": {
-    "clientId": "1529707096646357022",
-    "smallImageText": "Elysium Launcher",
-    "smallImageKey": "big"
+    "clientId": "1529707096646357022"
   },
   "servers": [
     {
       "id": "vanilla_1_20_1",
       "name": "Minecraft Vanilla 1.20.1",
       "description": "Servidor Oficial Elysium 1.20.1",
-      "icon": "",
       "version": "1.0.0",
       "address": "localhost:25565",
       "minecraftVersion": "1.20.1",
@@ -20,7 +17,6 @@
       "modules": [
         {
           "id": "net.minecraft:client:1.20.1",
-          "name": "Minecraft Vanilla",
           "type": "Vanilla",
           "version": "1.20.1"
         }
