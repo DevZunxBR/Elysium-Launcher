@@ -1,5 +1,5 @@
 {
-  "version": "0.0.2",
+  "version": "0.0.3",
   "rss": "https://devzunxbr.github.io/Elysium-Launcher/rss.xml",
   "discord": {
     "clientId": "1529707096646357022"
@@ -17,7 +17,7 @@
       "autoconnect": false,
       "modules": [
         {
-          "id": "net.minecraft",
+          "id": "net.minecraft:client:1.20.1",
           "type": "Vanilla",
           "version": "1.20.1"
         }
