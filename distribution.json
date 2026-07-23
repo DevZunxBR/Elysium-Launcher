@@ -9,49 +9,13 @@
       "id": "vanilla_1_20_1",
       "name": "Minecraft Vanilla 1.20.1",
       "description": "Versão limpa do Minecraft",
-      "icon": "URL_DA_IMAGEM.png",
-      "version": "1.20.1",
+      "icon": "",
+      "version": "1.0.0",
       "address": "",
       "minecraftVersion": "1.20.1",
-      "mainServer": false,
+      "mainServer": true,
       "autoconnect": false,
       "modules": []
-    },
-    {
-      "id": "forge_1_20_1",
-      "name": "Minecraft Forge 1.20.1",
-      "description": "Versão com suporte a mods Forge",
-      "icon": "URL_DA_IMAGEM.png",
-      "version": "1.20.1",
-      "address": "",
-      "minecraftVersion": "1.20.1",
-      "mainServer": false,
-      "autoconnect": false,
-      "modules": [
-        {
-          "id": "net.minecraftforge",
-          "type": "Forge",
-          "version": "1.20.1-47.2.0"
-        }
-      ]
-    },
-    {
-      "id": "fabric_1_20_1",
-      "name": "Minecraft Fabric 1.20.1",
-      "description": "Versão leve com suporte a mods Fabric",
-      "icon": "URL_DA_IMAGEM.png",
-      "version": "1.20.1",
-      "address": "",
-      "minecraftVersion": "1.20.1",
-      "mainServer": false,
-      "autoconnect": false,
-      "modules": [
-        {
-          "id": "net.fabricmc.fabric-loader",
-          "type": "Fabric",
-          "version": "0.14.21"
-        }
-      ]
     }
   ]
 }
