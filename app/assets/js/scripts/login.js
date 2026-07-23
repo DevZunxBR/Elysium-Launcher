@@ -17,9 +17,28 @@ const checkmarkContainer    = document.getElementById('checkmarkContainer')
 const loginRememberOption   = document.getElementById('loginRememberOption')
 const loginButton           = document.getElementById('loginButton')
 const loginForm             = document.getElementById('loginForm')
+const loginSubheader        = document.getElementById('loginSubheader')
+const loginPasswordField    = loginPassword.closest('.loginFieldContainer')
+const loginOptionsField      = document.getElementById('loginOptions')
+const loginDisclaimer        = document.getElementById('loginDisclaimer')
 
 // Control variables.
 let lu = false, lp = false
+
+function setOfflineLoginMode(enabled){
+    window.offlineLoginMode = enabled
+    loginSubheader.innerHTML = Lang.queryEJS(enabled ? 'login.offlineSubheader' : 'login.loginSubheader')
+    loginPasswordField.style.display = enabled ? 'none' : ''
+    loginOptionsField.style.display = enabled ? 'none' : ''
+    loginDisclaimer.style.display = enabled ? 'none' : ''
+    loginUsername.placeholder = Lang.queryEJS(enabled ? 'login.offlineUsernamePlaceholder' : 'login.loginEmailPlaceholder')
+    if(enabled){
+        lp = true
+        validateEmail(loginUsername.value)
+    } else {
+        loginPassword.value = ''
+    }
+}
 
 
 /**
@@ -168,6 +187,7 @@ loginCancelButton.onclick = (e) => {
     switchView(getCurrentView(), loginViewOnCancel, 500, 500, () => {
         loginUsername.value = ''
         loginPassword.value = ''
+        setOfflineLoginMode(false)
         loginCancelEnabled(false)
         if(loginViewCancelHandler != null){
             loginViewCancelHandler()
@@ -187,7 +207,11 @@ loginButton.addEventListener('click', () => {
     // Show loading stuff.
     loginLoading(true)
 
-    AuthManager.addMojangAccount(loginUsername.value, loginPassword.value).then((value) => {
+    const loginRequest = window.offlineLoginMode
+        ? Promise.resolve(AuthManager.addOfflineAccount(loginUsername.value))
+        : AuthManager.addMojangAccount(loginUsername.value, loginPassword.value)
+
+    loginRequest.then((value) => {
         updateSelectedAccount(value)
         loginButton.innerHTML = loginButton.innerHTML.replace(Lang.queryJS('login.loggingIn'), Lang.queryJS('login.success'))
         $('.circle-loader').toggleClass('load-complete')
@@ -203,6 +227,7 @@ loginButton.addEventListener('click', () => {
                 loginViewCancelHandler = null // Reset this for good measure.
                 loginUsername.value = ''
                 loginPassword.value = ''
+                setOfflineLoginMode(false)
                 $('.circle-loader').toggleClass('load-complete')
                 $('.checkmark').toggle()
                 loginLoading(false)

@@ -64,7 +64,7 @@ body, button {
     display: flex;
     flex-direction: column;
     transition: background-color 1s ease;
-    /*background-color: rgba(0, 0, 0, 0.5);*/
+    background-color: rgba(0, 0, 0, 0.65) !important;
     -webkit-user-select: none;
 }
 
@@ -511,27 +511,21 @@ body, button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 250px;
 }
 
 /* SVG icons on the login view. */
 .loginSVG {
-    fill: #fff;
-    height: 20px;
-    width: 20px;
+    display: none;
+}
+
+.loginFieldLabel {
+    display: none;
 }
 
 /* Span which displays errors related to login field content. */
 .loginErrorSpan {
-    font-family: 'Avenir Medium';
-    font-weight: bold;
-    font-size: 8px;
-    color: #ff1b0c;
-    width: 100%;
-    text-align: right;
-    position: absolute;
-    top: 7px;
-    opacity: 0;
-    transition: 0.25s ease;
+    display: none;
 }
 
 .shake {
@@ -559,12 +553,11 @@ body, button {
 /* Login text input styles. */
 .loginField {
     font-family: 'Avenir Book';
-    background: none;
-    border-width: 1.5px 0px 0px 0px;
-    border-style: solid;
-    width: 250px;
+    background: rgba(0, 0, 0, 0.28);
+    border: none;
+    width: 100%;
     margin-bottom: 20px;
-    border-color: #fff;
+    border-color: rgba(255, 255, 255, 0.55);
     color: rgba(255, 255, 255, 0.75);
     font-weight: bold;
     text-align: center;
@@ -1075,8 +1068,10 @@ body, button {
 #settingsContainerLeft {
     padding-top: 4%;
     height: 100%;
-    width: 25%;
+    width: 22%; 
     box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.32); 
+    border-right: 0px solid rgba(0, 0, 0, 0.32);
 }
 
 /* Settings navigation container. */
@@ -1183,8 +1178,9 @@ body, button {
 /* Right hand side of the settings container, for tabs. */
 #settingsContainerRight {
     height: 100%;
-    width: 75%;
+    width: 78%; /* <-- Ajustado para completar os 100% com o menu esquerdo */
     box-sizing: border-box;
+    padding-left: 30px; /* <-- ISSO RESOLVE O OVERLAP! Empurra o conteúdo 30px para a direita */
 }
 
 /* Settings tab shared styles. */

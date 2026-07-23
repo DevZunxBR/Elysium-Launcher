@@ -7,6 +7,8 @@ const { Client } = require('discord-rpc-patch')
 
 const Lang = require('./langloader')
 
+const DISCORD_CLIENT_ID = '1529707096646357022'
+
 let client
 let activity
 
@@ -29,7 +31,7 @@ exports.initRPC = function(genSettings, servSettings, initialDetails = Lang.quer
         client.setActivity(activity)
     })
     
-    client.login({clientId: genSettings.clientId}).catch(error => {
+    client.login({clientId: DISCORD_CLIENT_ID}).catch(error => {
         if(error.message.includes('ENOENT')) {
             logger.info('Unable to initialize Discord Rich Presence, no client detected.')
         } else {

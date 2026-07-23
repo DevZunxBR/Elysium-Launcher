@@ -16,6 +16,7 @@ const { MojangRestAPI, MojangErrorCode } = require('helios-core/mojang')
 const { MicrosoftAuth, MicrosoftErrorCode } = require('helios-core/microsoft')
 const { AZURE_CLIENT_ID }    = require('./ipcconstants')
 const Lang = require('./langloader')
+const crypto = require('crypto')
 
 const log = LoggerUtil.getLogger('AuthManager')
 
@@ -167,6 +168,30 @@ exports.addMojangAccount = async function(username, password) {
     }
 }
 
+/**
+ * Add a local account that does not require online authentication.
+ * Minecraft derives offline UUIDs from the player name using MD5.
+ *
+ * @param {string} username The in game name for the offline account.
+ * @returns {Object} The stored offline account.
+ */
+exports.addOfflineAccount = function(username) {
+    const displayName = username.trim()
+    const hash = crypto.createHash('md5').update(`OfflinePlayer:${displayName}`, 'utf8').digest()
+    hash[6] = (hash[6] & 0x0f) | 0x30
+    hash[8] = (hash[8] & 0x3f) | 0x80
+    const uuid = [
+        hash.toString('hex', 0, 4),
+        hash.toString('hex', 4, 6),
+        hash.toString('hex', 6, 8),
+        hash.toString('hex', 8, 10),
+        hash.toString('hex', 10, 16)
+    ].join('-')
+    const account = ConfigManager.addOfflineAccount(uuid, displayName)
+    ConfigManager.save()
+    return account
+}
+
 const AUTH_MODE = { FULL: 0, MS_REFRESH: 1, MC_REFRESH: 2 }
 
 /**
@@ -276,6 +301,11 @@ exports.addMicrosoftAccount = async function(authCode) {
 exports.removeMojangAccount = async function(uuid){
     try {
         const authAcc = ConfigManager.getAuthAccount(uuid)
+        if(authAcc.type === 'offline') {
+            ConfigManager.removeAuthAccount(uuid)
+            ConfigManager.save()
+            return Promise.resolve()
+        }
         const response = await MojangRestAPI.invalidate(authAcc.accessToken, ConfigManager.getClientToken())
         if(response.responseStatus === RestResponseStatus.SUCCESS) {
             ConfigManager.removeAuthAccount(uuid)
@@ -416,7 +446,9 @@ async function validateSelectedMicrosoftAccount(){
 exports.validateSelected = async function(){
     const current = ConfigManager.getSelectedAccount()
 
-    if(current.type === 'microsoft') {
+    if(current.type === 'offline') {
+        return true
+    } else if(current.type === 'microsoft') {
         return await validateSelectedMicrosoftAccount()
     } else {
         return await validateSelectedMojangAccount()

@@ -7,7 +7,7 @@ const logger = LoggerUtil.getLogger('ConfigManager')
 
 const sysRoot = process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Application Support' : process.env.HOME)
 
-const dataPath = path.join(sysRoot, '.helioslauncher')
+const dataPath = path.join(sysRoot, '.elysiumlauncher')
 
 const launcherDir = require('@electron/remote').app.getPath('userData')
 
@@ -343,6 +343,25 @@ exports.addMojangAuthAccount = function(uuid, accessToken, username, displayName
         type: 'mojang',
         accessToken,
         username: username.trim(),
+        uuid: uuid.trim(),
+        displayName: displayName.trim()
+    }
+    return config.authenticationDatabase[uuid]
+}
+
+/**
+ * Adds a local offline account to the database.
+ *
+ * @param {string} uuid The offline UUID of the account.
+ * @param {string} displayName The in game name of the account.
+ * @returns {Object} The account object created by this action.
+ */
+exports.addOfflineAccount = function(uuid, displayName){
+    config.selectedAccount = uuid
+    config.authenticationDatabase[uuid] = {
+        type: 'offline',
+        accessToken: '0',
+        username: displayName.trim(),
         uuid: uuid.trim(),
         displayName: displayName.trim()
     }
