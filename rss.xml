@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0">
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel>
     <title>Elysium Launcher - Notícias</title>
     <link>https://github.com/DevZunxBR/Elysium-Launcher</link>
     <description>Fique por dentro das novidades do servidor!</description>
-
+    
     <item>
         <title>Servidor Inaugurado!</title>
         <link>https://github.com/DevZunxBR/Elysium-Launcher</link>
-        <description>O servidor abriu oficialmente. Entre e chame seus amigos para jogar!</description>
+        <description><![CDATA[<p>O servidor abriu oficialmente. Entre e chame seus amigos para jogar!</p>]]></description>
         <pubDate>Thu, 23 Jul 2026 17:00:00 GMT</pubDate>
+        <dc:creator>Equipe Elysium</dc:creator>
     </item>
 </channel>
 </rss>
