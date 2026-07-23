@@ -7,7 +7,7 @@ const { SHELL_OPCODE } = require('./ipcconstants')
 // Group #2: File Extension (jar, zip, or litemod)
 // Group #3: If it is disabled (if string 'disabled' is present)
 const MOD_REGEX = /^(.+(jar|zip|litemod))(?:\.(disabled))?$/
-const DISABLED_EXT = '.disabled'
+const DISABLED_EXT = '.disabled' // List Compar;List/List.js
 
 const SHADER_REGEX = /^(.+)\.zip$/
 const SHADER_OPTION = /shaderPack=(.+)/

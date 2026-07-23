@@ -1,6 +1,6 @@
 {
   "version": "0.0.1",
-  "rss": "URL_DO_SEU_FEED_DE_NOTICIAS",
+  "rss": "https://devzunxbr.github.io/Elysium-Launcher/rss.xml",
   "discord": {
     "clientId": "1529707096646357022"
   },

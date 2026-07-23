@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+    <title>Elysium Launcher - Notícias</title>
+    <link>https://github.com/DevZunxBR/Elysium-Launcher</link>
+    <description>Fique por dentro das novidades do servidor!</description>
+    
+    <item>
+        <title>Servidor Inaugurado!</title>
+        <link>https://github.com/DevZunxBR/Elysium-Launcher</link>
+        <description>O servidor abriu oficialmente. Entre e chame seus amigos para jogar!</description>
+    </item>
+</channel>
+</rss>
